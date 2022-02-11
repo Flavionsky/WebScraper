@@ -12,6 +12,15 @@ public class Item {
         return title;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "title='" + title + '\'' +
+                ", url='" + url + '\'' +
+                ", price=" + price +
+                '}';
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
