@@ -7,6 +7,7 @@ public class Item {
     private String title;
     private String url;
     private Double price;
+    private String imgUrl;
 
     public String getTitle() {
         return title;
@@ -17,7 +18,8 @@ public class Item {
         return "Item{" +
                 "title='" + title + '\'' +
                 ", url='" + url + '\'' +
-                ", price=" + price +
+                ", price=" + price + '\'' +
+                ", imgUrl=" + imgUrl +
                 '}';
     }
 
@@ -31,6 +33,14 @@ public class Item {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public Double getPrice() {
