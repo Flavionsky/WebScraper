@@ -47,9 +47,7 @@ public class ScraperController{
                     HtmlElement spanPrice = ((HtmlElement) htmlItem.getFirstByXPath(".//span[@class='a-price-whole']"));
                     double itemPrice = spanPrice == null ? 0.00 : DecimalFormat.getNumberInstance(Locale.ITALIAN).parse(spanPrice.getVisibleText()).doubleValue();
 
-                    double minPrice = 100.00;
-
-                    if(itemPrice != 0.00 && itemPrice > minPrice){
+                    if(itemPrice != 0.00){
                         //initialize the new item
                         Item item = new Item();
 
@@ -63,8 +61,15 @@ public class ScraperController{
 
                         listItems.add(item);
                     }
+                }
+                listItems.sort(Comparator.comparing(Item::getPrice));
 
-                    listItems.sort(Comparator.comparing(Item::getPrice));
+                if(listItems.size() >= 10){
+                    ArrayList<Item> listItemsLess = new ArrayList<>();
+                    for(int i = 0; i < 10; i++){
+                        listItemsLess.add(listItems.get(i));
+                    }
+                    return listItemsLess;
                 }
                 return listItems;
             }else{
